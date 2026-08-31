@@ -1,0 +1,21 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        result = []
+        marked = set()
+
+        for t in range(len(strs)):
+
+            if strs[t] in marked:
+                continue
+
+            group = [strs[t]]   # start a group
+
+            for s in range(t + 1, len(strs)):
+
+                if sorted(strs[t]) == sorted(strs[s]):
+                    group.append(strs[s])   # add all matches
+                    marked.add(strs[s])
+
+            result.append(group)   # add group AFTER checking all
+
+        return result
