@@ -1,0 +1,19 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+
+        marked = set() # marked = [] will make it o(n^3) because arrays are o(n) is o(n) * o(n^2) will be o(n^3)
+        
+        if len(s) != len(t):
+            return False
+        
+        for i in range(len(s)):
+            for j in range(len(t)):
+                if j not in marked:
+                    if s[i] == t[j]:
+                        marked.add(j)
+                        break
+                    
+        if len(marked) == len(t):
+            return True
+        
+        return False
